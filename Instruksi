@@ -1,0 +1,112 @@
+posisi directory terminalnya pastikan ada di folder react
+npx create-react-app namaproject
+cd namaproject
+npm start
+unset HOST
+npm start
+create folder src(file dalam src diapius kecuali axiosnya)
+create file index.js
+create folder components
+dalem components, create file App.js
+
+create App.js(app berada didalam folder component)
+
+import React, { Component } from 'react'
+
+class App extends Component{
+    render(){
+        return(
+            <div>
+                <h1>
+                    App Component
+                </h1>
+            </div>
+
+        )
+    }
+
+}
+
+export default App
+
+create index.js
+
+import React from 'react'
+import ReactDOM from 'react-dom'
+import App from './components/App'
+ReactDOM.render(<App/>,document.getElementById("root"))
+
+import bootstrap pada index.js
+import 'bootstrap/dist/css/bootstrap.min.css'
+
+create register.js
+import React,{Component} from 'react'
+
+class Register extends Component{
+    render(){
+        return(
+            <div>
+                <h1>Component Register</h1>
+            </div>
+        )
+    }
+
+
+}
+
+export default Register
+
+create login.js
+import React,{Component} from 'react'
+
+class Login extends Component{
+    render(){
+        return(
+            <div>
+                <h1>Component Login</h1>
+            </div>
+        )
+    }
+
+
+}
+
+export default Login
+
+pada file App.js:
+import Register from './register'
+import Login from './login'
+create home
+
+
+tambah router
+pada terminal (pastikan directorynya udah di simplemerce)
+npm install react-router-dom
+
+import React, { Component } from 'react'
+import {Route,BrowserRouter} from 'react-router-dom'
+import Register from './Register'
+import Login from './Login'
+import Home from './Home'
+
+class App extends Component{
+    render(){
+        return(
+            <BrowserRouter>
+            <Route path='/' exact component={Home}/>
+            <Route path='/register' component={Register}/>
+            <Route path='/login' component={Login}/>
+            </BrowserRouter>
+    
+        )
+        }
+}
+
+export default App
+
+npm install axiosnya(package tidak global)
+sudo npm install -g json-serve insert pass laptop
+
+        axios
+react--------------->JSON
+react<--------------JSON
