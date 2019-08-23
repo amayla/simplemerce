@@ -1,0 +1,26 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "amanda",
+      "email": "manda@amail.com",
+      "password": "satudua"
+    }
+  ],
+  "products": [
+    {
+      "name": "Wonder Woman Tee",
+      "description": "Female T-Shirt",
+      "price": "200000",
+      "picture": "https://shopcdn.funko.com/media/catalog/product/cache/image/e9c3970ab036de70892d86c6d221abfe/f/h/fh11043_wonder_woman_jump_rope_light_blue_.png",
+      "id": 1
+    },
+    {
+      "name": "Lavender Tea ",
+      "description": "Dried lavender buds 100g",
+      "price": "200000",
+      "picture": "https://cdn.shopify.com/s/files/1/1106/7418/products/Lavender_300_720x.png?v=1546908229",
+      "id": 2
+    }
+  ]
+}
