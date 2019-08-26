@@ -114,3 +114,14 @@ react<--------------JSON
 json-server -p 2019 src/database/db.json
 
 create file ManageProducts.jsx
+
+membuat function getData()
+
+membuat navBar
+-create new component di file components
+-update ke app js(import dan create route)
+
+install reactstrap untuk memakai komponen bootstrap yang sudah dalam versi react
+import reactstrap pada header.js
+copy code untuk constructor dan toggle taro diatas fungsi render
+paste script return nya lalu di taro didalam fungsi render pada header.js

@@ -5,46 +5,34 @@ class ManageProducts extends Component{
 
     state = {
         // ditaruh di state
-        products:[]
-
-        
+        products:[],
+        selectedId:0
 
     }
 
-//ketiga
+    //ketiga
     componentDidMount(){
+        console.log('DidMount')
         //Ambil semua data produk (get)
+     this.getData()   
+
+    }
+
+
+    // mengambil data dari database
+    getData = () => {
         axios.get('http://localhost:2019/products')
         .then((res)=>{
             this.setState({products:res.data})
         }).catch((err)=> {
             console.log(err)
         })
-
-    }
-    // List product
-    renderList = () => {
-        // Map data object menjadi list. data didapat dr component didmount
-        // products=[{},{},{}]array
-        // product = {name.desc,price,picture}object
-        //hasilRender = [<tr></tr>,<tr></tr>,<tr></tr>]
-        let hasilRender = this.state.products.map((product)=>
-        {
-            return (
-                <tr>
-                    <td>{product.name}</td>
-                    <td>{product.description}</td>
-                    <td>{product.price}</td>
-                    <td>
-                        <img style={{width: "200px"}}src={product.picture}/>
-                    </td>
-                </tr>
-            )
-        })
-        return hasilRender
     }
 
-
+    onEditCLick = (id) => {
+        this.setState({selectedId: id} )
+    }
+    
     // Add Product. ada on nya krn berhubungan dengan event handler
     onAddProduct = () =>{
         // komponen buat sendiri => klo bawaan (){}
@@ -65,14 +53,68 @@ class ManageProducts extends Component{
             }
         ).then((res)=>{
             alert('Berhasil')
+            this.getData()
+            // mengambil data
+        
         }).catch((err)=>{
             console.log(err)
             alert('Gagal,coba buka console')
         })
 
+        
+
     }
-    //kedua
+
+    // List product
+    productList = () => {
+        // Map data object menjadi list. data didapat dr component didmount
+        // products=[{},{},{}]array
+        // product = {name.desc,price,picture}object
+        //hasilRender = [<tr></tr>,<tr></tr>,<tr></tr>]
+        let hasilRender = this.state.products.map((product)=>
+        { if (product.id!=this.state.selectedId){
+            return (
+                <tr key={product.id}>
+                    <td>{product.name}</td>
+                    <td>{product.description}</td>
+                    <td>{product.price}</td>
+                    <td>
+                        <img style={{width: "100px"}}src={product.picture} alt={product.desc}/>
+                    </td>
+                    <td>
+                        <button className="btn btn-outline-warning"
+                        // anonymous function
+                        onClick= {() => {this.onEditCLick(product.id)}}> 
+                            Edit
+                        </button>
+                    </td>
+                </tr>
+            )
+        } else{
+            // di render sebagai textbox
+            return(
+                <tr key={product.id}>
+                    <td><input type='text'/></td>
+                    <td><input type='text'/></td>
+                    <td><input type='text'/></td>
+                    <td><input type='text'/></td>
+                    <td>
+                        <button className='btn btn-outline-danger'>
+                        Cancel
+                        </button>
+                    </td>
+                </tr>
+            )
+        }
+        })
+        return hasilRender
+    }
+
+
+    
+    //kedua dan keempat
     render(){
+        console.log('render')
         return(
             <div className="container">
                 {/* RENDERING LIST DATA */}
@@ -88,7 +130,8 @@ class ManageProducts extends Component{
                         </tr>
                     </thead>
                     <tbody>
-                        {this.renderList()}
+                        {this.productList()}
+                        
                     </tbody>
                 </table>
 
@@ -128,5 +171,31 @@ class ManageProducts extends Component{
 }
 export default ManageProducts
 
+
+// key pada baris ke 74 menggunakan nilai id dari masing masing product
+//product={name,description,price,picture,id}
+/*
+life cycle method
+1.componentWillMount()
+2.render()
+3.componentDidMount()
+4.render()
+ */
+
 /*setiap kita running this.setState, akan men 
-trigger function render untuk me running ulang(re render2) */
+trigger function render untuk me running ulang(re render) */
+
+/*
+Memberikan function ke onclick
+
+1. Function tidak menerima argument
+    langsung tuliskan nama function tersebut didalam kurung kurawal onClick
+
+    contoh: {this.somethingDo} sebuah anonymous function () => {}
+    baru masukkan func yang ingin dipanggil didalam anonym. function tsb
+
+2. Function yang menerima argument
+    Masukkan terlebih dahulu ke onClick
+    onclick = this.comethingToDO(23)
+    onclick={() => { }}
+*/
