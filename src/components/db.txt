@@ -9,6 +9,13 @@
   ],
   "products": [
     {
+      "name": "Pastel Tee",
+      "description": "Female Tees",
+      "price": "210000",
+      "picture": "https://dzasv7x7a867v.cloudfront.net/product_photos/64330062/file_dd1d548aaa_original.png",
+      "id": 1
+    },
+    {
       "name": "Floral Tea",
       "description": "Dried lavender buds 100g",
       "price": "200000",
@@ -35,6 +42,13 @@
       "price": "195000",
       "picture": "https://www.talbots.com/dw/image/v2/BCMM_PRD/on/demandware.static/-/Sites-master-catalog-talbots/default/dw76aae5f4/images/191067138/191067138_1008.jpg?sw=2000&sh=2000&sm=cut&sfrm=jpg",
       "id": 5
+    },
+    {
+      "name": "Floral Hat",
+      "description": "Chic straw hat with floral accessories",
+      "price": "160000",
+      "picture": "https://ae01.alicdn.com/kf/HTB1PxVIrStYBeNjSspaq6yOOFXa4/Kajeer-Summer-Tea-Party-Hats-Women-Floppy-Foldable-Cap-Flowers-Beach-Straw-Sun-Hats-Female-Wide.jpg_q50.jpg",
+      "id": 6
     }
   ]
 }

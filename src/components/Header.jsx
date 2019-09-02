@@ -1,17 +1,21 @@
-import React, {Component} from 'react'
+  import React, {Component} from 'react'
 import {
     Collapse,
     Button,
     Navbar,
     NavbarToggler,
-    NavbarBrand,
     Nav,
-    NavItem,
-    UncontrolledDropdown,
-    DropdownToggle,
+    DropdownItem,
     DropdownMenu,
-    DropdownItem } from 'reactstrap';
+    DropdownToggle,
+    UncontrolledDropdown,
+    NavItem
+     } from 'reactstrap';
 import {Link,NavLink} from 'react-router-dom'
+import {} from 'react-redux'
+import {connect} from 'react-redux';
+import {onLogoutUser} from '../actions'
+
 
 class Header extends Component{
 
@@ -27,22 +31,25 @@ class Header extends Component{
         this.setState({
           isOpen: !this.state.isOpen
         });
+        
+      }
+      onButtonClick = () => {
+        this.props.onLogoutUser()
       }
 
 render() {
+  if(!this.props.username){
+    
+  
     return (
+      
         <div>
           <Navbar color="light" light expand="md">
             <Link className="navbar-brand" to="/">Orchid Four</Link>
             <NavbarToggler onClick={this.toggle} />
             <Collapse isOpen={this.state.isOpen} navbar>
               <Nav className="ml-auto" navbar>
-                <NavItem>
-                  <NavLink className ='nav-link' to="/">All Products</NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink className ='nav-link' to="/">Manage</NavLink>
-                </NavItem>
+                
                 <NavItem>
                     <NavLink to='/register'>
                     <Button className="mx-3" color="primary">Register</Button>
@@ -53,16 +60,58 @@ render() {
                     <Button color="success">Log In</Button> 
                     </NavLink>
                 </NavItem>
-                
-                
-              
               </Nav>
             </Collapse>
           </Navbar>
         </div>
       );
+    }else{
+
+      return (
+      
+        <div>
+         <Navbar color="light" light expand="md">
+              <Link className="navbar-brand" to="/">Orchid Four</Link>
+              <NavbarToggler onClick={this.toggle} />
+              <Collapse isOpen={this.state.isOpen} navbar>
+                <Nav className="ml-auto" navbar>
+                  <NavItem>
+                    <NavLink className="nav-link" to="/manageproducts">All Products</NavLink>
+                  </NavItem>
+                  <UncontrolledDropdown nav inNavbar>
+                  <DropdownToggle nav caret>
+                    Hello, {this.props.username}
+                  </DropdownToggle>
+                  <DropdownMenu right>
+                    <DropdownItem>
+                      Option 1
+                    </DropdownItem>
+                    <DropdownItem 
+                    onClick={this.props.onLogoutUser}>
+                      Log Out
+                    </DropdownItem>
+                    <DropdownItem divider />
+                    <DropdownItem>
+                      Reset
+                    </DropdownItem>
+                  </DropdownMenu>
+                </UncontrolledDropdown>
+                </Nav>
+              </Collapse>
+            </Navbar>
+        </div>
+      );
+
+    }
 }
 
 }
 
-export default Header
+const mapStateToProps = state => {
+  return {
+    username : state.auth.username
+  }
+}
+
+
+export default connect(mapStateToProps, {onLogoutUser})(Header)

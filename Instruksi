@@ -4,7 +4,7 @@ cd namaproject
 npm start
 unset HOST
 npm start
-create folder src(file dalam src diapius kecuali axiosnya)
+create folder src(file dalam src diapus kecuali axiosnya)
 create file index.js
 create folder components
 dalem components, create file App.js
@@ -125,3 +125,37 @@ install reactstrap untuk memakai komponen bootstrap yang sudah dalam versi react
 import reactstrap pada header.js
 copy code untuk constructor dan toggle taro diatas fungsi render
 paste script return nya lalu di taro didalam fungsi render pada header.js
+
+
+untuk login page
+install redux (additional framework untuk me manage state)
+npm install redux react-redux
+
+simple merce,
+masuk ke onsave click
+
+
+user logout ketika data 
+1. dihapus dr redux dan local storage
+-localSTorage.removeItem('userData')
+
+2. ATur kapan suatu data dapat diakses
+-login 
+ boleh : belum login
+ tidakboleh:sudah login
+
+ -register 
+ Boleh : belum login
+ tidak boleh : sudah login
+
+
+-Manage ManageProducts
+boleh : sudah login
+tidak boleh:belum login
+
+-untuk mengetahui ada atau tidaknya user login, dengan check username di redux
+
+3. Manage product, 
+
+
+
