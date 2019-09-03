@@ -7,7 +7,7 @@ class ProductItem extends Component {
 
         return (
             <div className='card col-5 mx-4 my-3' >
-                <img src={picture} alt='gbr' className='card-img-top'/>
+                <img style={{width:"250px",height:"250px",margin:"auto"}}src={picture} alt='gbr' className='card-img-top'/>
                 <div className='card-body'>
                     <h5 className='card-title'>{name}</h5>
                     <p className='card-text'>{price}</p>

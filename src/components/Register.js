@@ -10,17 +10,56 @@ class Register extends Component {
         let username = this.username.value
         let email = this.email.value
         let password = this.password.value
+
+        // cek apakah username sudah terpakai
+        axios.get(
+            'http://localhost:2019/users', 
+            {
+                params:{
+                    username: username
+                    
+                }
+                
+            }
+        ).then((res) => {
+            if(res.data.length>0){
+                alert('username is already being used')
+            }else{
+                //check if email is already used
+                axios.get(
+                    'http://localhost:2019/users', 
+                    {
+                        params:{
+                            email: email
+                            
+                        }
+                        
+                    }
+                ).then ((res) => {
+
+                    //jika user ditemukan
+                    if(res.data.length>0){
+                        alert('email is already being used')
+                    }else{
+                        alert('Register success!')
+                        axios.post(
+                            'http://localhost:2019/users', 
+                            {
+                                username: username,
+                                email: email,
+                                password: password
+                            }
+                        )
+                        
+                    }
+                })
+
+            }
+        })
         
         // POST data tersebut ke db.json
 
-        axios.post(
-            'http://localhost:2019/users', 
-            {
-                username: username,
-                email: email,
-                password: password
-            }
-        )
+        
     }
 
     render() {

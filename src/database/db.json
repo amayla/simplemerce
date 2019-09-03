@@ -5,6 +5,12 @@
       "username": "amanda",
       "email": "manda@amail.com",
       "password": "satudua"
+    },
+    {
+      "username": "larasati",
+      "email": "larasati@email.com",
+      "password": "satudua",
+      "id": 2
     }
   ],
   "products": [

@@ -133,7 +133,7 @@ class ManageProducts extends Component{
                     <td>{product.description}</td>
                     <td>{product.price}</td>
                     <td>
-                        <img style={{width: "100px"}}src={product.picture} alt={product.desc}/>
+                        <img style={{width: "100px", height:"100px"}}src={product.picture} alt={product.desc}/>
                     </td>
                     <td>
                         <button className="btn btn-outline-warning m-1"
